@@ -1,6 +1,6 @@
 ﻿
-# Filter Organisational Unit Messagerie :
-$OUpath = 'OU=Messagerie,OU=novrh interne,DC=novrh,DC=com'
+# Filter Organisational Unit Messagerie (for instance, must be adapted) :
+$OUpath = 'OU=Messagerie,DC=yourdomain,DC=com'
 $arrayExpiryUser=(Get-ADUser -SearchBase $OUpath -filter {Enabled -eq $True -and PasswordNeverExpires -eq $False} –Properties "DisplayName", "UserPrincipalName", "msDS-UserPasswordExpiryTimeComputed" |
 Select-Object -Property "Displayname","UserPrincipalName",@{Name="ExpiryDate";Expression={[datetime]::FromFileTime($_."msDS-UserPasswordExpiryTimeComputed")}} | Sort-Object -Property Displayname)
 
