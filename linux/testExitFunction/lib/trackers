@@ -1,0 +1,52 @@
+trackWithExit() {
+
+    trackLogger() {
+        local content=$1
+        echo "Tracker with Exit >>> $content"
+    }
+
+    trackLogger "Tracking start... (this function)"
+    local i=0
+    local TIMEOUT=10
+    while :
+    do
+        if [ $i -gt $TIMEOUT ]; then
+            exit 1
+        else
+            trackLogger "I'm the tracker and I'm doing some work"
+            trackLogger "i=$i"
+            sleep 1
+            ((i++))
+        fi
+    done
+
+    trackLogger "I'm the tracker and I left the while loop"
+    trackLogger "END"
+}
+
+
+trackWithReturn() {
+
+    trackLogger() {
+        local content=$1
+        echo "Tracker with Return >>> $content"
+    }
+
+    trackLogger "Tracking start... (this function)"
+    local i=0
+    local TIMEOUT=10
+    while :
+    do
+        if [ $i -gt $TIMEOUT ]; then
+            return 1;
+        else
+            trackLogger "I'm the tracker and I'm doing some work"
+            trackLogger "i=$i"
+            sleep 1
+            ((i++))
+        fi
+    done
+
+    trackLogger "I'm the tracker and I left the while loop"
+    trackLogger "END"
+}
