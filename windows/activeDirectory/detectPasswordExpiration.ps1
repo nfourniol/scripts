@@ -17,7 +17,7 @@ for ($i=0; $i -lt $arrayExpiryUser.Length; $i++) {
         $EmojiIconWink = [System.Char]::ConvertFromUtf32($EmojiIconCode)
 
         $mailTo = "{0} <{1}>" -f $arrayExpiryUser[$i]."DisplayName",$arrayExpiryUser[$i]."UserPrincipalName"
-        $subject = "Votre mot de passe Windows expire le {0}" -f $arrayExpiryUser[$i]."ExpiryDate"
+        $subject = "Your password expires on {0}" -f $arrayExpiryUser[$i]."ExpiryDate"
         $body=@"
 Your Windows session password will expire soon.<br/>
 Please change it when you come to OURCOMPANY.<br/><br/>
